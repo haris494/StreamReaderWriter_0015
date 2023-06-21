@@ -22,4 +22,29 @@ int main() {
 		if (baris == "q") break;
 		//menulis dan memassukan nilai dari 'baris' ke dalam file
 		outfile << baris << endl;
-	} 
+	}
+	// selesai dalam menulis sekararang tutup filenya
+	outfile.close();
+
+	//Membuka file dalam mode membaca
+	ifstream infile;
+	//menunjuk ke sebuah file
+	infile.open("contohfile.txt");
+
+	cout << endl << ">= membuka dan membaca file " << endl;
+	// jika file ada maka
+	if (infile.is_open())
+	{
+		// melakukan setiap baris
+		while (getline(infile, baris))
+		{
+			// dan tampilkan disini
+			cout << baris << '\n';
+		}
+		//tutup file tersebut setelah selesai
+		infile.close();
+	}
+	//jika tidak di temukan file maka akan menampilkan ini
+	else cout << "Unable to open file";
+	return 0;
+} 
